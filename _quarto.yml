@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: docs
+book:
+  title: Kioloa PopGen
+  author: Bernd Gruber, Arthur Georges, Carlo Pacioni, Luis Mijangos, and Emily Stringer
+  date: 02/28/2024
+  chapters:
+  - index.qmd
+  - schedule.qmd
+  - speakers.qmd
+  - install.qmd
+  - sessionX.qmd
+  - break.qmd
+  - references.qmd
+  - useful.qmd
+  - tutorials.qmd
+bibliography: references.bib
+highlight-style: pygments
+format:
+  html:
+    theme: cosmo
+    css:
+    - css.css
+    - include/webex.css
+    number-depth: 1
+    include-after-body: include/webex.js
+    link-external-icon: true
+    link-external-newwindow: true
+execute: 
+  cache: true
+editor: visual
