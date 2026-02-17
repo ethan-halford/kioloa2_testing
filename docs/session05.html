@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Kioloa PopGen - 5&nbsp; Effective Population Size</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./session06.html" rel="next">
+<link href="./session04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="css.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./session05.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Effective Population Size</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Kioloa PopGen</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Program</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./speakers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Speaker Bios</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Install dartRverse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to dartR</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pop Gen In Conservation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sequencing Technologies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Management, Reproducibility &amp; Integrity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Effective Population Size</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Management of Small Populations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Natural Selection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Landscape Genetics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lineage Divergence</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Sex Linked Markers</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">From Genes to Kin: Dissecting Relatedness &amp; Kinship</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Genetic Structure</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Combining Genomic Resources</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./break.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">__________</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./useful.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More info</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dartR Tutorials</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#required-packages" id="toc-required-packages" class="nav-link active" data-scroll-target="#required-packages"><em>Required packages</em></a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#current-effective-population-size" id="toc-current-effective-population-size" class="nav-link" data-scroll-target="#current-effective-population-size">1. Current effective population size</a></li>
+  <li><a href="#new-dartr.popgen-functionalities" id="toc-new-dartr.popgen-functionalities" class="nav-link" data-scroll-target="#new-dartr.popgen-functionalities">New dartR.popgen functionalities</a></li>
+  <li><a href="#the-infinite-problem" id="toc-the-infinite-problem" class="nav-link" data-scroll-target="#the-infinite-problem">The infinite problem</a></li>
+  <li><a href="#historic-effective-population-size" id="toc-historic-effective-population-size" class="nav-link" data-scroll-target="#historic-effective-population-size">2. Historic effective population size</a>
+  <ul class="collapse">
+  <li><a href="#based-on-sfs" id="toc-based-on-sfs" class="nav-link" data-scroll-target="#based-on-sfs">Based on SFS</a></li>
+  <li><a href="#the-sfs" id="toc-the-sfs" class="nav-link" data-scroll-target="#the-sfs">The SFS</a></li>
+  <li><a href="#examples-for-different-sfs-simulated" id="toc-examples-for-different-sfs-simulated" class="nav-link" data-scroll-target="#examples-for-different-sfs-simulated">Examples for different sfs (simulated)</a></li>
+  <li><a href="#epos" id="toc-epos" class="nav-link" data-scroll-target="#epos">Epos</a></li>
+  <li><a href="#stairways2" id="toc-stairways2" class="nav-link" data-scroll-target="#stairways2">Stairways2</a></li>
+  <li><a href="#example-run-of-stairways2" id="toc-example-run-of-stairways2" class="nav-link" data-scroll-target="#example-run-of-stairways2">Example run of Stairways2</a></li>
+  </ul></li>
+  <li><a href="#gone" id="toc-gone" class="nav-link" data-scroll-target="#gone">Gone</a></li>
+  <li><a href="#further-study" id="toc-further-study" class="nav-link" data-scroll-target="#further-study"><em>Further study</em></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Effective Population Size</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><em>Session Presenters</em></p>
+<p><img src="images/Presenters5.png" class="img-fluid"></p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-1_e1326e66a78157acc2fdbe128b6d38c9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set paths for different versions</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>path.binaries <span class="ot">&lt;-</span> <span class="st">"./binaries"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>path.data <span class="ot">&lt;-</span> <span class="st">"./data/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="required-packages" class="level2">
+<h2 class="anchored" data-anchor-id="required-packages"><em>Required packages</em></h2>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-2_a291bdac0e7b5931c8facb5404ce2777">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dartRverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dartR.popgen)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github('green-striped-gecko/geohippos')</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geohippos)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Ne is important for conservation and management of populations. It is an indicator of the genetic diversity of a population and is used to estimate the probability of extinction.</p>
+<p>Effective population size (<em>Ne</em>) is a concept in population genetics that refers to the number of breeding individuals in an idealized population that would show the same amount of genetic drift or inbreeding or linkage disequilbrium or coalescent as the population under study. Unlike the actual census size (<em>Nc</em>), which counts all individuals within a population, <em>Ne</em> focuses on those contributing genes to the next generation, offering a more precise understanding of a population’s genetic health and potential for evolutionary change.</p>
+<p>The 50/500 rule is a guideline in conservation biology that relates to the effective population size (<em>Ne</em>) and its implications for the conservation of species. This rule was first proposed by Franklin in 1980 and later expanded by Soule in 1986. It serves as a rule of thumb for determining the minimum viable population sizes needed to prevent inbreeding depression in the short term and maintain evolutionary potential over the long term.</p>
+<p>Be aware the 50/500 rule is a rule of thumb and should be used with caution. It is not a one-size-fits-all rule and should be used in conjunction with other information about the species and its habitat. It has been criticized for being too simplistic and not taking into account the specific needs of individual species.</p>
+</section>
+<section id="current-effective-population-size" class="level2">
+<h2 class="anchored" data-anchor-id="current-effective-population-size">1. Current effective population size</h2>
+<p>There are various methods to estimate current effective population size. In this section, we are going to focus on linkage disequilbrium and we will use the methods implemented in <code>NeEstimator</code>. <code>dartR.popgen</code> has a wrapper to run <code>NeEstimator</code>, which has been recently updated to include the new adjustments from Waples et al 2016. Also, we will look at possible causes of <span class="math inline">\(Inf\)</span> estimates.</p>
+</section>
+<section id="new-dartr.popgen-functionalities" class="level2">
+<h2 class="anchored" data-anchor-id="new-dartr.popgen-functionalities">New dartR.popgen functionalities</h2>
+<p>The method implemented in <code>NeEstimator</code> assumes that the loci are independent and that the linkage detected depends on the finite Ne of a population. Waples et al (2016) demonstrated that, in the genomic era when thousands of SNPs are available and when an annotated genome is available, the Ne can be improved (i.e.&nbsp;reduced downward bias) by considering linkage of only pairs of loci on different chromosomes. This option can now be easily accessed via <code>gl.LDNe</code> function using the argument <code>pairing</code> (and making sure information on Chromosomes were provided in the <code>@chromosome</code> slot.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-3_028e776af043ef9fb87b4b004c093c25">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run as it was classically run</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># SNP data (use two populations and only the first 100 SNPs)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pops <span class="ot">&lt;-</span> possums.gl[<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nes <span class="ot">&lt;-</span> <span class="fu">gl.LDNe</span>(pops,  <span class="at">outfile =</span> <span class="st">"popsLD.txt"</span>, <span class="at">neest.path =</span> path.binaries,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">critical =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>), <span class="at">singleton.rm =</span> <span class="cn">TRUE</span>, <span class="at">mating =</span> <span class="st">"random"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.LDNe 
+  Processing genlight object with SNP data
+Starting gl2genepop 
+  Processing genlight object with SNP data
+  The genepop file is saved as:  /tmp/RtmpcOl2kM/dummy.gen/
+Completed: gl2genepop 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        3321        3916        3741
+                  OverAll r^2    0.056847    0.055101    0.055956
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        13.5          15        14.2
+            CI low Parametric        11.5        12.9        12.2
+           CI high Parametric        15.9        17.5        16.6
+             CI low JackKnife         8.3         9.9         9.4
+            CI high JackKnife          23        23.9        22.6
+
+$B
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        4560        4950        4560
+                  OverAll r^2    0.054024    0.052873    0.054024
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        16.1        17.4        16.1
+            CI low Parametric        13.9        15.1        13.9
+           CI high Parametric        18.7        20.2        18.7
+             CI low JackKnife          11        11.7          11
+            CI high JackKnife        24.7        27.6        24.8
+
+  The results are saved in: /tmp/RtmpcOl2kM/popsLD.txt 
+Completed: gl.LDNe </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using only pairs of loci on different chromosomes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># made up some chromosome location</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pops<span class="sc">@</span>chromosome <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="fu">nLoc</span>(pops), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the use of the argument 'pairing'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>nessep <span class="ot">&lt;-</span> <span class="fu">gl.LDNe</span>(pops,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">outfile =</span> <span class="st">"popsLD.txt"</span>, <span class="at">pairing=</span><span class="st">"separate"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">neest.path =</span> path.binaries,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">critical =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>), <span class="at">singleton.rm =</span> <span class="cn">TRUE</span>, <span class="at">mating =</span> <span class="st">"random"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.LDNe 
+  Processing genlight object with SNP data
+Starting gl2genepop 
+  Processing genlight object with SNP data
+  The genepop file is saved as:  /tmp/RtmpcOl2kM/dummy.gen/
+Completed: gl2genepop 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        2991        3524        3363
+                  OverAll r^2    0.057154    0.055201    0.056229
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        13.3        14.9          14
+            CI low Parametric        11.2        12.7        11.9
+           CI high Parametric        15.7        17.6        16.5
+             CI low JackKnife         8.2         9.8         9.2
+            CI high JackKnife        22.5        23.9        22.3
+
+$B
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        4104        4456        4104
+                  OverAll r^2    0.053929    0.052809    0.053929
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        16.2        17.5        16.2
+            CI low Parametric        13.9          15        13.9
+           CI high Parametric          19        20.5          19
+             CI low JackKnife          11        11.7          11
+            CI high JackKnife        25.2        27.9        25.1
+
+  The results are saved in: /tmp/RtmpcOl2kM/popsLD.txt 
+Completed: gl.LDNe </code></pre>
+</div>
+</div>
+<p>If the loci are not mapped, but the number of chromosomes or the genome length is known, it is possible to apply a correction (eq 1a or 1b of Waples et al (2016)) using the arguments <code>Waples.correction</code> and <code>Waples.correction.value</code>.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-4_e648b6e3fbce3c6b91ed5ec017bd4d92">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct estimates based on the number of chromosomes</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nes <span class="ot">&lt;-</span> <span class="fu">gl.LDNe</span>(pops,   <span class="at">outfile =</span> <span class="st">"popsLD.txt"</span>,  <span class="at">neest.path =</span> path.binaries,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">critical =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>), <span class="at">singleton.rm =</span> <span class="cn">TRUE</span>, <span class="at">mating =</span> <span class="st">"random"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Waples.correction=</span><span class="st">'nChromosomes'</span>, <span class="at">Waples.correction.value=</span><span class="dv">22</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.LDNe 
+  Processing genlight object with SNP data
+Starting gl2genepop 
+  Processing genlight object with SNP data
+  The genepop file is saved as:  /tmp/RtmpcOl2kM/dummy.gen/
+Completed: gl2genepop 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+                            Statistic Frequency 1 Frequency 2 Frequency 3
+         Lowest Allele Frequency Used       0.050          0+       No S*
+            Harmonic Mean Sample Size          30          30          30
+              Independent Comparisons        3321        3916        3741
+                          OverAll r^2    0.056847    0.055101    0.055956
+                  Expected r^2 Sample    0.036878    0.036878    0.036878
+                        Estimated Ne^        13.5          15        14.2
+                    CI low Parametric        11.5        12.9        12.2
+                   CI high Parametric        15.9        17.5        16.6
+                     CI low JackKnife         8.3         9.9         9.4
+                    CI high JackKnife          23        23.9        22.6
+                 Waples' corrected Ne        17.4        19.4        18.3
+  Waples' corrected CI low Parametric        14.8        16.6        15.7
+ Waples' corrected CI high Parametric        20.5        22.6        21.4
+   Waples' corrected CI low JackKnife        10.7        12.8        12.1
+  Waples' corrected CI high JackKnife        29.7        30.8        29.2
+
+$B
+                            Statistic Frequency 1 Frequency 2 Frequency 3
+         Lowest Allele Frequency Used       0.050          0+       No S*
+            Harmonic Mean Sample Size          30          30          30
+              Independent Comparisons        4560        4950        4560
+                          OverAll r^2    0.054024    0.052873    0.054024
+                  Expected r^2 Sample    0.036878    0.036878    0.036878
+                        Estimated Ne^        16.1        17.4        16.1
+                    CI low Parametric        13.9        15.1        13.9
+                   CI high Parametric        18.7        20.2        18.7
+                     CI low JackKnife          11        11.7          11
+                    CI high JackKnife        24.7        27.6        24.8
+                 Waples' corrected Ne        20.8        22.5        20.8
+  Waples' corrected CI low Parametric        17.9        19.5        17.9
+ Waples' corrected CI high Parametric        24.1        26.1        24.1
+   Waples' corrected CI low JackKnife        14.2        15.1        14.2
+  Waples' corrected CI high JackKnife        31.9        35.6          32
+
+  The results are saved in: /tmp/RtmpcOl2kM/popsLD.txt 
+Completed: gl.LDNe </code></pre>
+</div>
+</div>
+</section>
+<section id="the-infinite-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-infinite-problem">The infinite problem</h2>
+<p>Sometimes, Ne estimates are <span class="math inline">\(Inf\)</span>. This is usually taken to mean that the population in question is very large. Indeed, in an infinitely large population no linkage should occur (between independent loci). However, it is sometimes useful to be able to understand the origin of this estimate.</p>
+<p>The original formula to calculate Ne for species with random mating systems is (eq 7 Waples 2006):</p>
+<p><span class="math display">\[
+1/3(\hat{r}^{2} - 1/S)
+\]</span></p>
+<p>while for species with monogamy is (eq 8 Waples 2006):</p>
+<p><span class="math display">\[
+2/3(\hat{r}^{2} - 1/S)
+\]</span></p>
+<p>where <span class="math inline">\(\hat{r}^{2}\)</span> is the estimate inter-locus correlation based on Burrows’ <span class="math inline">\(\Delta\)</span>. However, <code>NeEstimator</code> also applies an empirical correction that was demonstrated by Waples 2006 to reduce the bias of <span class="math inline">\(N_e\)</span> estimations. For example, for species with random mating and with a sample size <span class="math inline">\(S\ge30\)</span> this becomes:</p>
+<p><span class="math display">\[
+N_e = \frac{1/3 + \sqrt{(1/9 - 2.76 \hat{r}^{2}\prime)}}{2 \hat{r}^{2}\prime}
+\]</span></p>
+<p>Note that when <span class="math inline">\(\hat{r}^{2}\prime &gt; \frac{1}{9*2.76}\)</span> –&gt; <span class="math inline">\(\hat{r}^{2}\prime &gt; 0.04025765\)</span> the term within the square root is negative, so it becomes undefined.</p>
+<p>The observed inter-locus correlation is a combination of <span class="math inline">\(\hat{r}^{2}_{drift} + E(\hat{r}^{2}_{sample})\)</span>. Because we are really after only <span class="math inline">\(\hat{r}^{2}_{drift}\)</span>, we estimate it by subtracting <span class="math inline">\(E(\hat{r}^{2}_{sample})\)</span>, i.e.:</p>
+<p><span class="math display">\[
+\hat{r}^{2}\prime = \hat{r}^{2} - E(\hat{r}^{2}_{sample})
+\]</span></p>
+<p>For small sample sizes, <span class="math inline">\(E(\hat{r}^{2}_{sample})\)</span> can be relatively large and our <span class="math inline">\(N_e\)</span> estimate can become negative. Let’s have a look at possible values of <span class="math inline">\(E(\hat{r}^{2}_{sample})\)</span> for different sample size (<span class="math inline">\(S\ge30\)</span>):</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-5_3a3f4074eeec9142d1a7eb74626851af">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>r_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(S) (<span class="dv">1</span><span class="sc">/</span>S) <span class="sc">+</span> (<span class="fl">3.16</span><span class="sc">/</span>S<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">r_sample</span>(<span class="fu">seq</span>(<span class="dv">30</span>, <span class="dv">50</span>, <span class="at">by=</span><span class="dv">5</span>)), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.037 0.031 0.027 0.024 0.021</code></pre>
+</div>
+</div>
+<p>For <span class="math inline">\(S&lt;30\)</span></p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-6_68243acc72b854c83be6c9aee0f2c876">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>r_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(S) <span class="fl">0.018</span> <span class="sc">+</span> (<span class="fl">0.907</span><span class="sc">/</span>S) <span class="sc">+</span> (<span class="fl">4.44</span><span class="sc">/</span>S<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">r_sample</span>(<span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">30</span>, <span class="at">by=</span><span class="dv">5</span>)), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.377 0.153 0.098 0.074 0.061 0.053</code></pre>
+</div>
+</div>
+<p>it is easy then to imagine that for small sample sizes, we may ‘overcorrect’ and the denominator may become negative, which is a non-sense result. Generally, the interpretation is that the linkage detected is a result of simple sampling error. A test of whether the detected linkage is statistically significant may help to interpret the results.</p>
+<p><code>gl.LDNe</code> gained the argument <code>naive</code>, which calculates <span class="math inline">\(N_e\)</span> without the empirical correction. This is mostly to aid the diagnostic of where the <span class="math inline">\(Inf\)</span> estimate (if it occurs) is coming from.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-7_cb4e4ef13e1ec45ee13561ff16aac34f">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct estimates based on the number of chromosomes</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>nes <span class="ot">&lt;-</span> <span class="fu">gl.LDNe</span>(pops,  <span class="at">outfile =</span> <span class="st">"popsLD.txt"</span>, <span class="at">neest.path =</span> path.binaries,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">critical =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>), <span class="at">singleton.rm =</span> <span class="cn">TRUE</span>, <span class="at">mating =</span> <span class="st">"random"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">naive=</span><span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.LDNe 
+  Processing genlight object with SNP data
+Starting gl2genepop 
+  Processing genlight object with SNP data
+  The genepop file is saved as:  /tmp/RtmpcOl2kM/dummy.gen/
+Completed: gl2genepop 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        3321        3916        3741
+                  OverAll r^2    0.056847    0.055101    0.055956
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        13.5          15        14.2
+            CI low Parametric        11.5        12.9        12.2
+           CI high Parametric        15.9        17.5        16.6
+             CI low JackKnife         8.3         9.9         9.4
+            CI high JackKnife          23        23.9        22.6
+          Naive Estimated Ne^        14.2        15.3        14.7
+
+[[2]]
+                    Statistic Frequency 1 Frequency 2 Frequency 3
+ Lowest Allele Frequency Used       0.050          0+       No S*
+    Harmonic Mean Sample Size          30          30          30
+      Independent Comparisons        4560        4950        4560
+                  OverAll r^2    0.054024    0.052873    0.054024
+          Expected r^2 Sample    0.036878    0.036878    0.036878
+                Estimated Ne^        16.1        17.4        16.1
+            CI low Parametric        13.9        15.1        13.9
+           CI high Parametric        18.7        20.2        18.7
+             CI low JackKnife          11        11.7          11
+            CI high JackKnife        24.7        27.6        24.8
+          Naive Estimated Ne^        16.1        17.1        16.1
+
+  The results are saved in: /tmp/RtmpcOl2kM/popsLD.txt 
+Completed: gl.LDNe </code></pre>
+</div>
+</div>
+<p>Other sources of problems are potentially coming from the loci selection that you have. If all sampled individuals are homozygous for the same allele (in one population) or are heterozygous, the estimation of <span class="math inline">\(N_e\)</span> fails. That is because the inter-locus correlation based on Burrows’ <span class="math inline">\(\Delta\)</span> cannot be computed. <code>NeEstimator</code> removes all monomorphic loci (if you haven’t done that before), so often this is not a problem, but (I think) it still may happen when all individuals are heterozygous.</p>
+</section>
+<section id="historic-effective-population-size" class="level2">
+<h2 class="anchored" data-anchor-id="historic-effective-population-size">2. Historic effective population size</h2>
+<section id="based-on-sfs" class="level3">
+<h3 class="anchored" data-anchor-id="based-on-sfs">Based on SFS</h3>
+<p>The Site Frequency Spectrum (SFS), sometimes referred to as the allele frequency spectrum, is a fundamental concept in population genetics that describes the distribution of allele frequencies at polymorphic sites within a sample of DNA sequences from a population. It provides a powerful summary of the genetic variation present in the population, capturing information about the history of mutations, demographic events (such as population expansions or bottlenecks). There are several methods to estimate historic, but we explore only two here: Epos <span class="citation" data-cites="lynch2019">Lynch et al. (<a href="references.html#ref-lynch2019" role="doc-biblioref">2019</a>)</span> and Stairways2 <span class="citation" data-cites="liu2020">Liu and Fu (<a href="references.html#ref-liu2020" role="doc-biblioref">2020</a>)</span></p>
+</section>
+<section id="the-sfs" class="level3">
+<h3 class="anchored" data-anchor-id="the-sfs">The SFS</h3>
+<p>It is straight forward to create the sfs from a genlight/dartR object. But first you want to make sure you do not have missing data in your dataset, because the allele frequency spectrum is sensitive to missing data.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-8_93b43135b92dfb008abb331568bf403f">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>gl100 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"slim_100.rds"</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the population size and number of populations</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">pop</span>(gl100))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ A 
+50 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#number of individuals</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nInd</span>(gl100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#number of loci</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nLoc</span>(gl100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10645</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sfscon <span class="ot">&lt;-</span> <span class="fu">gl.sfs</span>(gl100, <span class="at">folded =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.sfs 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed: gl.sfs </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sfscon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  d0   d1   d2   d3   d4   d5   d6   d7   d8   d9  d10  d11  d12  d13  d14  d15 
+  10 1924 1188  676  557  408  400  260  249  254  238  200  179  186  195  170 
+ d16  d17  d18  d19  d20  d21  d22  d23  d24  d25  d26  d27  d28  d29  d30  d31 
+ 180  115  170  122  138  127  142   99  105  109  110   95  106  112   88   85 
+ d32  d33  d34  d35  d36  d37  d38  d39  d40  d41  d42  d43  d44  d45  d46  d47 
+  89   80  100   91   60   96   97   88  111   81   72   86   85   57   91  110 
+ d48  d49  d50 
+  90  114   50 </code></pre>
+</div>
+</div>
+<p>As you can see the is simply a table of the number of alleles at each frequency. Be aware the the sfs is folded by default, but you can change this with the argument <code>folded = FALSE</code>. In most of the cases we will use the folded=TRUE option as you need phased data to use the unfolded sfs (and also have an idea which state is the ancestral one. Often the genomic of an ancestral outgroup is used for this information).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Parameter in gl.sfs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> Try different settings for the sfs and see what happens. There are three important parameters:</p>
+<ul>
+<li><code>minbinsize</code> (default is 1)</li>
+<li><code>folded</code> (default is TRUE)</li>
+<li><code>singlepop</code> (default is TRUE) [if you have more than one population in your genlight object]</li>
+</ul>
+</div>
+</div>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-9_610da028ff9231e1c92a9372d50a2789">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#unfolded sfs</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>un.sfs <span class="ot">&lt;-</span> <span class="fu">gl.sfs</span>(gl100, <span class="at">folded =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.sfs 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed: gl.sfs </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>un.sfs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  d0   d1   d2   d3   d4   d5   d6   d7   d8   d9  d10  d11  d12  d13  d14  d15 
+   0 1913 1144  649  540  392  368  250  231  229  216  182  163  163  149  152 
+ d16  d17  d18  d19  d20  d21  d22  d23  d24  d25  d26  d27  d28  d29  d30  d31 
+ 141  103  138  106  108  102  110   81   83   82   88   74   83   86   60   63 
+ d32  d33  d34  d35  d36  d37  d38  d39  d40  d41  d42  d43  d44  d45  d46  d47 
+  48   59   62   61   38   58   68   55   66   51   42   54   49   26   54   49 
+ d48  d49  d50  d51  d52  d53  d54  d55  d56  d57  d58  d59  d60  d61  d62  d63 
+  54   65   50   49   36   61   37   31   36   32   30   30   45   33   29   38 
+ d64  d65  d66  d67  d68  d69  d70  d71  d72  d73  d74  d75  d76  d77  d78  d79 
+  22   30   38   21   41   22   28   26   23   21   22   27   22   18   32   25 
+ d80  d81  d82  d83  d84  d85  d86  d87  d88  d89  d90  d91  d92  d93  d94  d95 
+  30   16   32   12   39   18   46   23   16   18   22   25   18   10   32   16 
+ d96  d97  d98  d99 d100 
+  17   27   44   11   10 </code></pre>
+</div>
+</div>
+<p>In addition it is possible to create multidimensional sfs, which is useful for example when you have multiple populations (in case you want to have that use: singlepop=FALSE). Be aware if you want to create and multidimensional sfs from more than say 3 populations a 30 individuals you create a huge array of dimensions (61 x 61 x 61), with mainly zeros. So often multidemensional sfs are not very useful.</p>
+<p>So lets have a closer look at the folder sfs from the example. The simulated population had a constant (effective) population size <em>Ne</em> of 100 individuals. Hence we know from theory that we have to expect a sfs that follows an exponential distribution.</p>
+<p>We now load two more data sets:</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-10_4a87eccab4c5a8ccbcf2a6c591e739cc">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gldec <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"slim_100_50_50yago.rds"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>glinc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"slim_100_200_50yago.rds"</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>glbottle <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"slim_100_10_50_50yago_10year.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>gldec</code> is a population that experienced a decline from Ne=100 to Ne=50 50 years ago, while <code>glinc</code> is a population that experienced an increase from Ne=100 to Ne=200 50 years ago. And <code>glbottle</code> is a data set that experienced a bottleneck from Ne=100 to Ne=10 50 years ago and then an increase to Ne=50 after years.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Compare SFS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> Create a SFS for the three new datasets and compare them to the SFS of the constant population. What do you expect?</p>
+</div>
+</div>
+<p>Below is a plot that shows all four SFS.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-11_d0435531db36ce52b5dc3b6aabbf5369">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sfsdec <span class="ot">&lt;-</span> <span class="fu">gl.sfs</span>(gldec, <span class="at">folded =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.sfs 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed: gl.sfs </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sfsinc <span class="ot">&lt;-</span> <span class="fu">gl.sfs</span>(glinc, <span class="at">folded =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.sfs 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed: gl.sfs </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sfsbottle <span class="ot">&lt;-</span> <span class="fu">gl.sfs</span>(glbottle, <span class="at">folded =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting gl.sfs 
+  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed: gl.sfs </code></pre>
+</div>
+</div>
+</section>
+<section id="examples-for-different-sfs-simulated" class="level3">
+<h3 class="anchored" data-anchor-id="examples-for-different-sfs-simulated">Examples for different sfs (simulated)</h3>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-12_1a72a98b5cf03df47360c147d8598772">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>, sfscon, sfsdec, sfsinc, sfsbottle)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>sfscon))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>sfsdec))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>sfsinc))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>sfsbottle))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>g1<span class="sc">+</span>g2<span class="sc">+</span>g3<span class="sc">+</span>g4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As you can see it is not really possible to see the differences between the sfs, so lets check how good our methods are to recreate the historic population sizes.</p>
+</section>
+<section id="epos" class="level3">
+<h3 class="anchored" data-anchor-id="epos">Epos</h3>
+<p>Lets start with the simple one and lets use Epos (as this is the fastest method). A typical epos run requires the genlight/dartR object, then the path to the epos binary.</p>
+<p>There are two more important parameters l and mu. l is the total lenght of the “sampled” chromosome and we will have a discussion on that. mu is the mutation rate per site per generation. The important concept to keep in mind is that:</p>
+<p><span class="math display">\[\LARGE x = mu \times L \times 2 \times Ne \]</span> , where x is the number of mutations in a generation.</p>
+<p>So to be able to estimate the trajectory in an absolute sense we need to know L and mu. In a simulation that is easy because we know how long the chromosome(s) were we did our simulation on. Here L=5e8 and mu was set to a value of 1e-8.</p>
+<p>We could provide the sfs, but the gl.epos function does take care of that in case none is provided (it call gl.sfs). Additional parameters in EPOS are the number of bootstraps that should be run for confidence intervalas (the more the more runs and the longer it takes) and the minimum bins size. Here we use minbinsize=1 (the default), because we have simulated data and also trust our low frequency bins. In a real data set you might want to change that to higer values, though if too high you might delete too much information from your data (the first bins have the highest number of entries and therefore should be the most informative ones).</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-13_88477953b59169b69b407193c835d768">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fl">5e8</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">1e-8</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#forgive me but you need to name "L" as little l in the function call. </span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#will be corrected in the ne</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a> Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(gl100, <span class="at">epos.path =</span><span class="st">"./binaries/"</span>, <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As you might remember the population size was constant at 100 individuals. So we expect the Ne to be 100 for all generations. And indeed the median is 100 for allmost all generations. The confidence intervals are very narrow, which is expected as we have simulated this data set. There is little bit disturbing ‘dip’ at really low population sizes. This hints to the known limitation that in very recent times there had not been enough mutations to estimate the population size correctly.</p>
+<p>Before we go on with the other data sets (fairly easy to run, just replace the gl100 with the other data sets) we should discuss the parameter l and mu. The l parameter is the length of the chromosome that was sampled. In a real data set you might not know that, because this depends on your methods, the amount of filters etc. Hence the question is what happens if you set l wrong. Lets test set and set L to an often used value: number of loci times 69 (because in a dart analysis we get 69 bases of sequence hence that sounds like a reasonable idea).</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-14_47588f0ce8594b5b29c99c2e51df9767">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="dv">69</span> <span class="sc">*</span> <span class="fu">nLoc</span>(gl100)  <span class="co">#734505</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">1e-8</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a> Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(gl100, <span class="at">epos.path =</span>path.binaries , <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As you can see this is not a good idea the axis values are completely off. The reason is that the number of mutations is calculated as L * mu * Ne. So if you set L too low, you will get a too high Ne (and also the number of generations are off). If you set L too high, you will get a too low Ne. So you need to know the length of the chromosome that you are working with. The good news is that the trajectory is still correct, so we can rely on the shape of the curve, but the absolute values are wrong if L (or mu) are set incorrectly.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Run Epos for different combinations of L and mu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> You can now run epos for different combinations of L and mu. What do you expect if you set L and mu in such a way that L * mu compensate each other?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Run Epos for all data sets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> And now to the next exercise which is the more intersting one: run Epos for all four data sets data sets(glcon, glinc, gldec, glbottle) and compare the results to the simulated trajectories. Once finished you can have a look at the code below.</p>
+</div>
+</div>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-15_5355b214d4ed71bd3f3e83258c5ad994">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fl">5e8</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">1e-8</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co">#constant</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(gl100, <span class="at">epos.path =</span> path.binaries , <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>pcon <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">#constant</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(glinc, <span class="at">epos.path =</span> path.binaries , <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>pinc <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">#constant</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(gldec, <span class="at">epos.path =</span> path.binaries , <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>pdec <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#constant</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>Ne_epos <span class="ot">&lt;-</span> <span class="fu">gl.epos</span>(glbottle, <span class="at">epos.path =</span> path.binaries , <span class="at">l =</span> L, <span class="at">u=</span>mu, <span class="at">boot=</span><span class="dv">10</span>, <span class="at">minbinsize =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Processing genlight object with SNP data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_epos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"low"</span>, <span class="st">"Ne_median"</span>, <span class="st">"high"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>pbottle <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Ne_epos, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>low, <span class="at">ymax=</span>high), <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now we can plot them next all in one go:</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-16_39358ca6da0f9847c4010d63c5619270">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>pcon <span class="sc">+</span> pinc <span class="sc">+</span> pdec <span class="sc">+</span> pbottle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Pretty good, or what do you think?</p>
+</section>
+<section id="stairways2" class="level3">
+<h3 class="anchored" data-anchor-id="stairways2">Stairways2</h3>
+<p>Stairways is the actually more popular mehtod to estimate the historic population sizes from SNPs. The reason is most likely that EPOS was implemented in a way that makes it really hard to run for a not initiated person (you need to compile c++ and run some commands in GO). The upshot in Epos is that is it much much faster and the results are not too different to stairways. Nevertheless, we will have a go with stairways below.</p>
+<p>The good new is that stairways uses the identical input parameters: L, mu, minbinsize. Hence nothing new here an it “suffers” therefore from the same problem if we do not know mu of L the trajectory is okay, but the absolute values on the axis are off.</p>
+<p>The main difference (and here I admit I have to resort to a general explanation as it is beyond my paygrade to understand). Epos uses a simple semi-analytical optimization method to find the best fitting trajectory, whereas stairways uses a machine learning approach that takes longer (but potentially explores the parameter space better). My current approach is to use both methods and see if the results are similar.</p>
+</section>
+<section id="example-run-of-stairways2" class="level3">
+<h3 class="anchored" data-anchor-id="example-run-of-stairways2">Example run of Stairways2</h3>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-17_0f5995e69b7ad9f1a902c0a154009995">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fl">5e8</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">1e-8</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#takes about 5 minutes so not run here</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Ne_sw &lt;- gl.stairway2(gl100, stairway.path=path.binaries, mu = mu, gentime = 1, run=TRUE, nreps = 30, parallel=10, L=L, minbinsize =1)</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>Ne_sw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"Ne_sw_gl100.rds"</span>))</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Ne_sw, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>Ne_median))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>Ne_2.<span class="fl">5.</span>, <span class="at">ymax=</span>Ne_97.<span class="fl">5.</span>), <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> Now that you have learned to run Epos and Stairways, perhaps try to run your own data sets or use the ones provided.</p>
+<p>Foxes in Australia (foxes.rds) Crocodiles in Australia (crocs.rds)</p>
+<p>You can also try to run the simulator to explore how good the methods are for more complicated demographic histories. [slim simulator]</p>
+</div>
+</div>
+</section>
+</section>
+<section id="gone" class="level2">
+<h2 class="anchored" data-anchor-id="gone">Gone</h2>
+<p>[Needs more implementation and testing, but I will give a brief overview here.] [Be aware Gone is very data hungry and seems not to work too well with the number of SNPs we have at our disposal, but in simulations with Ne~1000 and lots of individuals it seems to work well].</p>
+<p>Gone is a very different method to estimate the population size. It was developed by <span class="citation" data-cites="santiago2020">Santiago et al. (<a href="references.html#ref-santiago2020" role="doc-biblioref">2020</a>)</span>. The authors utilize LD patterns to infer the demographic history of populations. LD can be affected by various factors including recombination, mutation, genetic drift, and population structure. The method is based on the idea that the LD decay is a function of the population size and the recombination rate. So we need next to our SNP data also a so called linkage map. This can be achieved if you have a reference genome available and you can map the SNPs to the reference genome. Gone itself has not been tested to much for recent population sizes and is still very much under research about its usefullness for recent population sizes.</p>
+<p>Below is an implementation to run Gone using the dartRverse, but be aware it has not been much tested. We certainly can run Gone using our simulated data (because we simulted 5 chromosomes and we have a full map of them on those chromosomes).</p>
+<p>To see that we can check how many snps we have on the chromosomes in our data sets.</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-18_0add496ccb6694fab61d4078729544fd">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(gl100<span class="sc">@</span>chromosome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3    4    5 
+2252 2130 2132 2229 1902 </code></pre>
+</div>
+</div>
+<p>So lets run Gone (be aware it is not very userfriendly implemented yet in terms of the settings. Gone currently a script file that is hidden within the script_GONE.sh file and you need to edit it there to change it from the defaults.</p>
+<p>Explain the settings (important MAF)</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-19_abe88c4789d30b65aef97a02ac702085">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#take a bit long</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ne_gone &lt;- gl.gone(gl100,gone.path = path.binaries) #runs parallel via InputParamters</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#load it instead</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>Ne_gone <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"Ne_gone_100.rds"</span>))</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_gone) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"Ne_mean"</span>)</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Ne_gone, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_mean))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Pretty terrible I guess. My first findings indicate the Gone is much more data hungry and works better with much more SNPs, more chromosomes and more individuals. There is a data set I available using 5 chromosomes (but twice in length) and 100 indivduals (being stable all the time)</p>
+<p>The plot is below:</p>
+<div class="cell" data-hash="session05_cache/html/unnamed-chunk-20_4c4ce87b1cce530f759543b8d7838f25">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>glgone100 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"slimgone_100.rds"</span>))</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Ne_gone &lt;- gl.gone(gl100,gone.path = "d:/bernd/r/geohippos/binaries/gone/windows/") #runs parallel via InputParamters</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co">#takes too long</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>Ne_gone <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(path.data,<span class="st">"Ne_gone_100.rds"</span>))</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Ne_gone) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"generation"</span>, <span class="st">"Ne_mean"</span>)</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Ne_gone, <span class="fu">aes</span>(<span class="at">x=</span>generation, <span class="at">y=</span>Ne_mean))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="session05_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>It is certainly possible that gone is “saveable” but it is obvious that Gone is not very “good” in recent years. There seems to be a sweet spot where Gone works well &gt;100 Generations and &lt;300 generations, but that needs more testing.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/task.png" class="class" width="48" height="48"> Now that you have learned to run Gone perhaps try to run your own data sets or use the ones provided.</p>
+<p>You can also try to run the simulator to explore how good the methods are for more complicated demographic histories. [slim simulator]</p>
+</div>
+</div>
+<p>We hope you have fun runnig the code and please do not hesitate to ask questions or provide feedback.</p>
+<p>Cheers, Carlo &amp; Bernd</p>
+</section>
+<section id="further-study" class="level2">
+<h2 class="anchored" data-anchor-id="further-study"><em>Further study</em></h2>
+<p>Bill Sherwins DnaDot (Session 5): <a href="https://url.au.m.mimecastprotect.com/s/wxkvCoVzMRhJvQXNF16CzB?domain=github.com">https://github.com/wsherwin01/DnaDot</a></p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-liu2020" class="csl-entry" role="listitem">
+Liu, Xiaoming, and Yun-Xin Fu. 2020. <span>“Stairway <span>Plot</span> 2: Demographic History Inference with Folded <span>SNP</span> Frequency Spectra.”</span> <em>Genome Biology</em> 21 (November). <a href="https://doi.org/10.1186/s13059-020-02196-9">https://doi.org/10.1186/s13059-020-02196-9</a>.
+</div>
+<div id="ref-lynch2019" class="csl-entry" role="listitem">
+Lynch, Michael, Bernhard Haubold, Peter Pfaffelhuber, and Takahiro Maruki. 2019. <span>“Inference of <span>Historical</span> <span>Population</span>-<span>Size</span> <span>Changes</span> with <span>Allele</span>-<span>Frequency</span> <span>Data</span>.”</span> <em>G3: Genes<span></span>Genomes<span></span>Genetics</em> 10 (1): 211–23. <a href="https://doi.org/10.1534/g3.119.400854">https://doi.org/10.1534/g3.119.400854</a>.
+</div>
+<div id="ref-santiago2020" class="csl-entry" role="listitem">
+Santiago, E., I. Novo, A. F. Pardiñas, M. Saura, J. Wang, and A. Caballero. 2020. <span>“Recent Demographic History Inferred by High-Resolution Analysis of Linkage Disequilibrium.”</span> <em>Molecular Biology and Evolution</em> 37 (12): 3642–53. <a href="https://doi.org/10.1093/molbev/msaa174">https://doi.org/10.1093/molbev/msaa174</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./session04.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Management, Reproducibility &amp; Integrity</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./session06.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Management of Small Populations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
